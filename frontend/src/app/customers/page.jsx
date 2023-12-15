@@ -1,20 +1,47 @@
-async function fetchTest(customerId) {
-  // const customerId = 'C007';
-  const staticData = await fetch(`http://127.0.0.1:5000/customers?customer_id=${customerId}`);
-  return staticData.json();
-}
+"use client";
+import OneCustomerInfoCard from "src/app/components/one_customer_info_card.jsx";
+import Link from 'next/link'
+import { revalidatePath } from 'next/cache';
+import { useEffect, useState } from 'react';
+import fetchCustomers from "./fetchCustomers";
 
-export default async function Page() {
-  const customerInfo = await fetchTest("C009");
-  // return <pre>{JSON.stringify(customerInfo, null, 2)}</pre>
+export default function Page() {
+  const [customerInfos, setCustomerInfos] = useState([]);
+
+  useEffect(() => {
+      const fetchAndSetCustomer = async () => {
+          const customerData = await fetchCustomers();
+          setCustomerInfos(customerData);
+      };
+      fetchAndSetCustomer();
+  }, []);
+
   return (
-    <div className="m-4 card bordered bg-blue-100 hover:bg-blue-200 transition-colors duration-200">
-      <div className="card-body">
-        <h2 className="card-title">{customerInfo[0].customer_name}</h2> 
-        <p>Customer ID: {customerInfo[0].customer_id}</p>
-        <p>Age: {customerInfo[0].age}</p>
-        <p>Gender: {customerInfo[0].gender}</p>
+    <>
+      <div className="p-4">
+        <Link href="/customers/create" className="mt-4 pt-4" prefetch={false}>
+          <button className="btn btn-neutral w-full border-0 bg-blue-200 text-black hover:text-white">Create</button>
+        </Link>
       </div>
-    </div>
-  )
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+        {customerInfos.map((customerInfo, index) => (
+          <div key={index} className="card bordered bg-white border-blue-200 border-2 flex flex-row max-w-sm m-4">
+            <OneCustomerInfoCard {...customerInfo} />
+            <div className="card-body flex flex-col justify-between">
+              <Link href={`/customers/read/${customerInfo.customer_id}`}>
+                <button className="btn btn-neutral w-20 border-0 bg-blue-200 text-black hover:text-white">Read</button>
+              </Link>
+              <Link href={`/customers/update/${customerInfo.customer_id}`}>
+                <button className="btn btn-neutral w-20 border-0 bg-blue-200 text-black hover:text-white">Update</button>
+              </Link>
+              <Link href={`/customers/delete/${customerInfo.customer_id}`}>
+                <button className="btn btn-neutral w-20 border-0 bg-blue-200 text-black hover:text-white">Delete</button>
+              </Link>
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
+  );
 }

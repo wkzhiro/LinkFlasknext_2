@@ -5,7 +5,7 @@ from flask_cors import CORS
 
 from db_control import crud, mymodels
 
-
+# Azure Database for MySQL
 # REST APIでありCRUDを持っている
 app = Flask(__name__)
 CORS(app)
@@ -30,14 +30,21 @@ def create_customer():
     return result, 200
 
 @app.route("/customers", methods=['GET'])
-def read_customer():
+def read_one_customer():
     model = mymodels.Customers
     target_id = request.args.get('customer_id') #クエリパラメータ
     result = crud.myselect(mymodels.Customers, target_id)
     return result, 200
-   
+
+@app.route("/allcustomers", methods=['GET'])
+def read_all_customer():
+    model = mymodels.Customers
+    result = crud.myselectAll(mymodels.Customers)
+    return result, 200
+
 @app.route("/customers", methods=['PUT'])
 def update_customer():
+    print("I'm in")
     values = request.get_json()
     values_original = values.copy()
     model = mymodels.Customers
@@ -45,6 +52,7 @@ def update_customer():
     #             "customer_name": "鈴木C子",
     #             "age": 44,
     #             "gender": "男"}
+    print("print1", values_original)
     tmp = crud.myupdate(model, values)
     result = crud.myselect(mymodels.Customers, values_original.get("customer_id"))
     return result, 200
