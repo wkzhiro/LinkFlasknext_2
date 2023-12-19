@@ -1,7 +1,6 @@
 "use client";
 import OneCustomerInfoCard from "src/app/components/one_customer_info_card.jsx";
 import Link from 'next/link'
-import { revalidatePath } from 'next/cache';
 import { useEffect, useState } from 'react';
 import fetchCustomers from "./fetchCustomers";
 

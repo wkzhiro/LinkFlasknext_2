@@ -1,11 +1,10 @@
 "use client"
 import Link from 'next/link';
-import { revalidatePath } from 'next/cache';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 
 export default function ConfirmPage(props) {
     const customer_id = useSearchParams().get("customer_id");
-    // revalidatePath(`/customers`);
+
     return (
         <>
             <div className="card bordered bg-white border-blue-200 border-2 max-w-sm m-4">

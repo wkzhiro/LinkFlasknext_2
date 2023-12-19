@@ -5,7 +5,6 @@ import deleteCustomer from './deleteCustomer';
 import fetchCustomer from './fetchCustomer';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { revalidatePath } from 'next/cache';
 
 export default function DeletePage(props) {
   const customer_id = props.params.id;
@@ -23,9 +22,7 @@ export default function DeletePage(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     await deleteCustomer(customer_id)
-    // revalidatePath(`/customers`);
     router.push(`./delete/confirm?customer_id=${customer_id}`);
   };
 

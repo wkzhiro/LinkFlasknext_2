@@ -1,5 +1,4 @@
 "use client"
-import OneCustomerInfoCard from "src/app/components/one_customer_info_card.jsx"
 import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import fetchCustomer from "./fetchCustomer";
@@ -22,7 +21,6 @@ export default function UpdatePage(props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(formRef.current);
-    // console.log(formData.entries())
     await updateCustomer(formData);
     router.push(`./${formData.get("customer_id")}/confirm`);
   };

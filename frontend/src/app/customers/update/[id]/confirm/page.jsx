@@ -20,14 +20,10 @@ export default function ConfirmPage(props) {
   return (
     <>
       <div className="card bordered bg-white border-blue-200 border-2 max-w-sm m-4">
-        <div className="alert alert-success p-4 text-center">
-          更新しました
-        </div>
+        <div className="alert alert-success p-4 text-center">更新しました</div>
         <OneCustomerInfoCard {...customer} />
         <a href="/customers" className="flex justify-center">
-          <button className="btn btn-outline btn-accent">
-            一覧に戻る
-          </button>
+          <button className="btn btn-outline btn-accent">一覧に戻る</button>
         </a>
       </div>
     </>

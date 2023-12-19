@@ -8,7 +8,6 @@ export default function ConfirmPage() {
     const router = useRouter();
     const customer_id = useSearchParams().get("customer_id");
     const [customer, setCustomer] = useState(null);
-    // console.log(customer_id)
 
     useEffect(() => {
         const fetchAndSetCustomer = async () => {

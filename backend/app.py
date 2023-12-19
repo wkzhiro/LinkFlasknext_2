@@ -52,7 +52,6 @@ def update_customer():
     #             "customer_name": "鈴木C子",
     #             "age": 44,
     #             "gender": "男"}
-    print("print1", values_original)
     tmp = crud.myupdate(model, values)
     result = crud.myselect(mymodels.Customers, values_original.get("customer_id"))
     return result, 200

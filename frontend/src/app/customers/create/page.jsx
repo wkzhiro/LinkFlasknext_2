@@ -1,12 +1,9 @@
 "use client"
-import OneCustomerInfoCard from "src/app/components/one_customer_info_card.jsx";
-
-import Link from 'next/link';
-import createCustomer from './createCustomer';
-
 
 import { useRef } from 'react';
 import { useRouter } from 'next/navigation';
+
+import createCustomer from './createCustomer';
 
 export default function CreatePage() {
     const formRef = useRef();
@@ -15,7 +12,6 @@ export default function CreatePage() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData(formRef.current);
-
         await createCustomer(formData);
         router.push(`./create/confirm?customer_id=${formData.get("customer_id")}`);
     };
