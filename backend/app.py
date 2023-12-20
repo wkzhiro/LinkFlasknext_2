@@ -5,6 +5,8 @@ from flask_cors import CORS
 
 from db_control import crud, mymodels
 
+import requests
+
 # Azure Database for MySQL
 # REST APIでありCRUDを持っている
 app = Flask(__name__)
@@ -15,7 +17,6 @@ CORS(app)
 def index():
     return "<p>Flask top page!</p>"
  
-
 @app.route("/customers", methods=['POST'])
 def create_customer():
     values = request.get_json()
@@ -62,3 +63,8 @@ def delete_customer():
     target_id = request.args.get('customer_id') #クエリパラメータ
     result = crud.mydelete(model, target_id)
     return result, 200
+
+@app.route("/fetchtest")
+def fetchtest():
+    response = requests.get('https://jsonplaceholder.typicode.com/users')
+    return response.json(), 200
