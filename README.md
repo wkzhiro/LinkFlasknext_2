@@ -7,6 +7,7 @@ cd frontend
 npm install
 npm run dev
 
+
 ■ backend
 cd backend
 python3 -m venv backend_env
