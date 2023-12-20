@@ -2,11 +2,6 @@ This is a Flask-Next.js repo
 
 ### git clone https://github.com/fumifumi9999/LinkFlaskNext.git
 
-■ frontend
-- cd frontend
-- npm install
-- npm run dev
-
 ■ backend
 - cd backend
 - python3 -m venv backend_env
@@ -14,3 +9,9 @@ This is a Flask-Next.js repo
 - pip install -r requirements.txt
 - flask --app app run
 
+■ frontend
+- cd frontend
+- npm install
+- npm run dev
+
+■ http://localhost:3000/customers にアクセス
