@@ -1,5 +1,3 @@
-
-
 export default async function updateCustomer(formData) {
   
     const updated_customer_name = formData.get("customer_name");

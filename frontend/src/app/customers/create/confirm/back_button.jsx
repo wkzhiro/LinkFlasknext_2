@@ -1,11 +1,12 @@
 "use client";
+
 import { useRouter } from "next/navigation";
 
 const BackButton = (props) => {
   const router = useRouter();
 
   return (
-    <button onClick={() => router.back()}>
+    <button onClick={() => router.push("./../../customers")}>
       <div className="btn btn-primary m-4 text-2xl">
         {props.children}
       </div>
