@@ -2,12 +2,12 @@ import OneCustomerInfoCard from "src/app/components/one_customer_info_card.jsx"
 
 
 async function fetchCustomer(id) {
-    const res = await fetch(`http://127.0.0.1:5000/customers?customer_id=${id}`);
-    if (!res.ok) {
-      throw new Error('Failed to fetch customer');
-    }
-    return res.json();
+  const res = await fetch(process.env.API_ENDPOINT + `/customers?customer_id=${id}`);
+  if (!res.ok) {
+    throw new Error('Failed to fetch customer');
   }
+  return res.json();
+}
 
 export default async function ReadPage({ query }) {
   const { id } = query;

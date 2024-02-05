@@ -14,7 +14,7 @@ const createCustomer = async (formData) => {
         gender: creating_gender,
     })
 
-    const res = await fetch(`http://127.0.0.1:5000/customers`, {
+    const res = await fetch(process.env.API_ENDPOINT+`/customers`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: body_msg,

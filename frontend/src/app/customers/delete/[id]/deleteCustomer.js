@@ -1,5 +1,5 @@
 export default async function deleteCustomer(id) {
-    const res = await fetch(`http://127.0.0.1:5000/customers?customer_id=${id}`, {
+    const res = await fetch(process.env.API_ENDPOINT+`/customers?customer_id=${id}`, {
       method: 'DELETE',
     });
     if (!res.ok) {
