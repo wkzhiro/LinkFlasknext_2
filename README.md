@@ -1,6 +1,6 @@
 This is a Flask-Next.js repo
 
-### git clone https://github.com/fumifumi9999/LinkFlaskNext.git
+### git clone https://github.com/MasaakiYagi/LinkFlaskNext.git
 
 ■ backend
 - cd backend
