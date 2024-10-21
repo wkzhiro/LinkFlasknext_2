@@ -11,7 +11,6 @@ import requests
 # REST APIでありCRUDを持っている
 app = Flask(__name__)
 CORS(app)
- 
 
 @app.route("/")
 def index():
@@ -47,6 +46,7 @@ def read_all_customer():
 def update_customer():
     print("I'm in")
     values = request.get_json()
+    print("values",values)
     values_original = values.copy()
     model = mymodels.Customers
     # values = {  "customer_id": "C004",
